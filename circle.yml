@@ -9,10 +9,10 @@ machine:
 
 test:
   override:
-    - mvn integration-test site
+    - mvn -s settings.xml integration-test site
 
 deployment:
   production:
-    branch: production
+    branch: master
     commands:
       - mvn -s settings.xml -P production site
