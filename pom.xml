@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ch.stangenberg</groupId>
+    <artifactId>parentPom</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>parent pom</name>
+    <description>Parent pom.xml with most used pre-configured features and versions</description>
+    <url>https://github.com/stangenberg/parentPom</url>
+
+    <inceptionYear>2015</inceptionYear>
+    <organization>
+        <name>stangenberg.ch</name>
+        <url>http://www.stangenberg.ch</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>BSD</name>
+            <url>https://raw.githubusercontent.com/stangenberg/parentPom/master/LICENSE.txt</url>
+            <distribution>repo</distribution>
+            <comments>BSD License</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>1</id>
+            <name>Thorben Stangenberg</name>
+            <email>thorben@stangenberg.ch</email>
+            <organization>Stangenberg Innovative Informatik GmbH</organization>
+            <organizationUrl>http://www.stangenberg.ch</organizationUrl>
+            <roles>
+                <role>Architect</role>
+                <role>Developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/stangenberg/parentPom/issues</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:git:github.com:stangenberg/parentPom.git</connection>
+        <developerConnection>scm:git:github.com:stangenberg/parentPom.git</developerConnection>
+        <url>https://github.com/stangenberg/parentPom</url>
+    </scm>
+    <prerequisites>
+        <maven>3.0</maven>
+    </prerequisites>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+</project>
