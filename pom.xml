@@ -94,5 +94,37 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>developer</id>
+            <activation>
+                <property>
+                    <name>!CIRCLECI</name>
+                </property>
+            </activation>
+            <properties>
+                <github.site.dryRun>true</github.site.dryRun>
+            </properties>
+        </profile>
+        <profile>
+            <id>circleci</id>
+            <activation>
+                <property>
+                    <name>CIRCLECI</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <github.site.dryRun>true</github.site.dryRun>
+            </properties>
+        </profile>
+        <profile>
+            <id>production</id>
+            <properties>
+                <github.site.dryRun>false</github.site.dryRun>
+            </properties>
+        </profile>
+
+    </profiles>
 
 </project>

@@ -1,0 +1,18 @@
+general:
+  branches:
+    ignore:
+      - gh-pages
+
+machine:
+  java:
+    version: oraclejdk8
+
+test:
+  override:
+    - mvn integration-test site
+
+deployment:
+  production:
+    branch: production
+    commands:
+      - mvn -s settings.xml -P production site
