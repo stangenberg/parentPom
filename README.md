@@ -21,6 +21,10 @@ define our artifact as a parent of your project:
 </project>
 ```
 
+## Project Site
+
+[http://stangenberg.github.io/parentPom/](http://stangenberg.github.io/parentPom/)
+
 
 ## Questions?
 
@@ -30,3 +34,8 @@ If you have any questions about the framework, or something doesn't work as expe
 ## How to contribute?
 
 Fork the repository, make changes, submit a pull request. We promise to review your changes same day and apply to the master branch, if they look correct.
+
+
+## License
+
+[BSD License](https://raw.githubusercontent.com/stangenberg/parentPom/master/LICENSE.txt) 
