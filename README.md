@@ -1,4 +1,6 @@
-[![Build Status](https://circleci.com/gh/stangenberg/parentPom.svg?style=svg)](https://circleci.com/gh/stangenberg/parentPom)
+### Master Build [![Circle CI](https://circleci.com/gh/stangenberg/parentPom/tree/master.svg?style=svg)](https://circleci.com/gh/stangenberg/parentPom/tree/master)
+
+### Develop Build [![Circle CI](https://circleci.com/gh/stangenberg/parentPom/tree/develop.svg?style=svg)](https://circleci.com/gh/stangenberg/parentPom/tree/develop)
 
 # Parent Pom
 

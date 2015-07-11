@@ -16,6 +16,10 @@ test:
     - mvn -s settings.xml integration-test site
 
 deployment:
+  develop:
+    branch: develop
+    commands:
+      - mvn -s settings.xml deploy
   production:
     branch: master
     commands:
