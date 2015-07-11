@@ -10,7 +10,7 @@ machine:
 dependencies:
   override:
     - mvn -s settings.xml -P release dependency:resolve
-    - mvn -s settings.xml site
+    - mvn -s settings.xml -DskipTests integration-test
 
 test:
   override:
