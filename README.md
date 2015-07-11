@@ -1,6 +1,16 @@
-[![Build Status](https://circleci.com/gh/stangenberg/parentPom.svg?style=svg)](https://circleci.com/gh/stangenberg/parentPom)
-
 # Parent Pom
+
+## Status
+
+Name | Status
+---- | ------
+Master Build | [![Circle CI](https://circleci.com/gh/stangenberg/parentPom/tree/master.svg?style=svg)](https://circleci.com/gh/stangenberg/parentPom/tree/master)
+Master Dependecies | [![Dependency Status](https://www.versioneye.com/user/projects/55a0bdbf323939001800015b/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55a0bdbf323939001800015b)
+Develop Build | [![Circle CI](https://circleci.com/gh/stangenberg/parentPom/tree/develop.svg?style=svg)](https://circleci.com/gh/stangenberg/parentPom/tree/develop)
+Develop Dependencies | [![Dependency Status](https://www.versioneye.com/user/projects/55a0be113239390021000115/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55a0be113239390021000115)
+
+
+## About
 
 Base your Maven projects on this artifact and you will get many pre-configuration benefits, including up-to-date
 `dependencies`, `plugins`, build `extensions`,

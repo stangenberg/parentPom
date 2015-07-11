@@ -7,12 +7,20 @@ machine:
   java:
     version: oraclejdk8
 
+dependencies:
+  override:
+    - mvn -s settings.xml -P release dependency:resolve
+
 test:
   override:
-    - mvn -s settings.xml integration-test site
+    - mvn -s settings.xml clean integration-test site
 
 deployment:
-  production:
+  develop:
+    branch: develop
+    commands:
+      - mvn -s settings.xml clean deploy
+  release:
     branch: master
     commands:
-      - mvn -s settings.xml -P production site
+      - bash release.sh

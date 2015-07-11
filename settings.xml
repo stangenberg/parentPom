@@ -7,5 +7,10 @@
             <id>github</id>
             <password>${env.github_password}</password>
         </server>
+        <server>
+            <id>ossrh</id>
+            <username>${env.ossrh_jira_id}</username>
+            <password>${env.ossrh_jira_pwd}</password>
+        </server>
     </servers>
 </settings>
