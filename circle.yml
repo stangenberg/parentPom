@@ -10,10 +10,12 @@ machine:
 dependencies:
   override:
     - mvn -s settings.xml -P release dependency:resolve
+    - mvn -s settings.xml site
 
 test:
   override:
-    - mvn -s settings.xml clean integration-test site
+    - mvn -s settings.xml clean integration-test
+    - mvn -s settings.xml site
 
 deployment:
   develop:
