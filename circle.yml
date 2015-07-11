@@ -9,18 +9,18 @@ machine:
 
 dependencies:
   override:
-    - mvn -s settings.xml dependency:resolve
+    - mvn -s settings.xml -P production dependency:resolve
 
 test:
   override:
-    - mvn -s settings.xml integration-test site
+    - mvn -s settings.xml clean integration-test site
 
 deployment:
   develop:
     branch: develop
     commands:
-      - mvn -s settings.xml deploy
+      - mvn -s settings.xml clean deploy
   production:
     branch: master
     commands:
-      - mvn -s settings.xml -P production site
+      - mvn -s settings.xml clean
