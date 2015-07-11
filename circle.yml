@@ -9,7 +9,7 @@ machine:
 
 dependencies:
   override:
-    - mvn -s settings.xml -P production dependency:resolve
+    - mvn -s settings.xml -P release dependency:resolve
 
 test:
   override:
@@ -20,7 +20,7 @@ deployment:
     branch: develop
     commands:
       - mvn -s settings.xml clean deploy
-  production:
+  release:
     branch: master
     commands:
-      - mvn -s settings.xml clean
+      - bash release.sh
