@@ -7,6 +7,10 @@ machine:
   java:
     version: oraclejdk8
 
+dependencies:
+  override:
+    - mvn -s settings.xml dependency:resolve
+
 test:
   override:
     - mvn -s settings.xml integration-test site
