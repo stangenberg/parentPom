@@ -11,6 +11,7 @@ dependencies:
   override:
     - mvn -s settings.xml -P release dependency:resolve
     - mvn -s settings.xml -DskipTests integration-test
+    - mvn -s settings.xml -DdryRun=true --batch-mode release:prepare
 
 test:
   override:
