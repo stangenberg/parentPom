@@ -25,4 +25,5 @@ deployment:
   release:
     branch: master
     commands:
-      - bash release.sh
+      - mvn -s settings.xml -DdryRun=false --batch-mode release:prepare
+      - mvn -s settings.xml -DdryRun=false --batch-mode release:perform
