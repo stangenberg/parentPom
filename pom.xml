@@ -16,6 +16,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <github.global.server>github</github.global.server>
         <release-version>1.0.0</release-version>
+        <developmentVersion>1.0.1-SNAPSHOT</developmentVersion>
         <defaultOriginUrl>git@github.com:stangenberg/parentPom.git</defaultOriginUrl>
     </properties>
 
