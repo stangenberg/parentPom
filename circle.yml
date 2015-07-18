@@ -33,5 +33,5 @@ deployment:
   release:
     branch: master
     commands:
-      - mvn -s settings.xml -DdryRun=false --batch-mode clean release:prepare
-      - mvn -s settings.xml -DdryRun=false --batch-mode release:perform
+      - mvn -s settings.xml -X -DdryRun=false --batch-mode clean release:prepare
+      - mvn -s settings.xml -X -DdryRun=false --batch-mode release:perform
