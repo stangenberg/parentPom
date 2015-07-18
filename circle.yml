@@ -9,7 +9,7 @@ machine:
 
 checkout:
   post:
-    git clean -d -f   # clean up
+    - git clean -d -f   # clean up
 
 dependencies:
   override:
