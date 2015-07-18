@@ -31,7 +31,7 @@ deployment:
       - mvn -s settings.xml clean deploy # deploy the snapshot
       - mvn -s settings.xml jgitflow:release-start # start the release
   release:
-    branch: release/*
+    branch: /release.*/
     commands:
       - mvn -s settings.xml jgitflow:release-finish # finish the release
   master:
