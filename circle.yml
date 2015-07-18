@@ -29,9 +29,13 @@ deployment:
   develop:
     branch: develop
     commands:
-      - mvn -s settings.xml clean deploy
+      - mvn -s settings.xml clean deploy # deploy the snapshot
+      - mvn -s settings.xml jgitflow:release-start # start the release
   release:
+    branch: release/*
+    commands:
+      - mvn -s settings.xml jgitflow:release-finish # finish the release
+  master:
     branch: master
     commands:
-      - mvn -s settings.xml -X -DdryRun=false --batch-mode clean release:prepare
-      - mvn -s settings.xml -X -DdryRun=false --batch-mode release:perform
+      - mvn -s settings.xml clean deploy
