@@ -11,6 +11,14 @@
     <description>Parent pom.xml with most used pre-configured features and versions</description>
     <url>https://github.com/stangenberg/parentPom</url>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <github.global.server>github</github.global.server>
+        <release-version>1.0.0</release-version>
+        <defaultOriginUrl>git@github.com:stangenberg/parentPom.git</defaultOriginUrl>
+    </properties>
+
     <inceptionYear>2015</inceptionYear>
     <organization>
         <name>Stangenberg Innovative Informatik GmbH</name>
@@ -63,11 +71,6 @@
     <prerequisites>
         <maven>3.0</maven>
     </prerequisites>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <github.global.server>github</github.global.server>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -177,8 +180,9 @@
                     <pushFeatures>true</pushFeatures>
                     <pushReleases>true</pushReleases>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <defaultOriginUrl>git@github.com:stangenberg/parentPom.git</defaultOriginUrl>
+                    <defaultOriginUrl>${defaultOriginUrl}</defaultOriginUrl>
                     <keepBranch>true</keepBranch>
+                    <releaseVersion>${release-version}</releaseVersion>
                 </configuration>
             </plugin>
             <plugin>
