@@ -16,7 +16,7 @@ dependencies:
 test:
   override:
     - mvn -s settings.xml clean integration-test
-    - mvn -s settings.xml site
+    - mvn -s settings.xml clean site
 
 deployment:
   develop:
@@ -26,5 +26,5 @@ deployment:
   release:
     branch: master
     commands:
-      - mvn -s settings.xml -DdryRun=false --batch-mode release:prepare
+      - mvn -s settings.xml -DdryRun=false --batch-mode clean release:prepare
       - mvn -s settings.xml -DdryRun=false --batch-mode release:perform
