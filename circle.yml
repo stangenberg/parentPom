@@ -6,6 +6,9 @@ general:
 machine:
   java:
     version: oraclejdk8
+  post:
+    - git config --global user.email "thorben@stangenberg.ch"
+    - git config --global user.name "Thorben Stangenberg"
 
 checkout:
   post:
