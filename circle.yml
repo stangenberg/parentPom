@@ -11,10 +11,9 @@ machine:
     - git config --global user.name "Thorben Stangenberg"
 
 checkout:
-  pre:
-    - rm -rf /home/ubuntu/parentPom
   post:
-    - git clean -d -f   # clean up
+    - git fetch -p        # cleanup remotes that do no longer exist
+    - git clean -d -x -f  # clean up stale files and directories
 
 dependencies:
   override:
