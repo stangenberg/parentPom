@@ -11,6 +11,8 @@ machine:
     - git config --global user.name "Thorben Stangenberg"
 
 checkout:
+  pre:
+    - rm -rf /home/ubuntu/parentPom
   post:
     - git clean -d -f   # clean up
 
