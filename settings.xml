@@ -12,9 +12,5 @@
             <username>${env.ossrh_jira_id}</username>
             <password>${env.ossrh_jira_pwd}</password>
         </server>
-        <server>
-            <id>gpg.passphrase</id>
-            <passphrase>${env.gpg_passphrase}</passphrase>
-        </server>
     </servers>
 </settings>
