@@ -9,16 +9,21 @@ machine:
   post:
     - git config --global user.email "thorben@stangenberg.ch"
     - git config --global user.name "Thorben Stangenberg"
+    - echo $gpg_key | tr '@' '\n' > ~/gpg.key
+    - gpg --import --allow-secret-key-import ~/gpg.key
 
 checkout:
   post:
-    - git clean -d -f   # clean up
+    - git checkout master
+    - git pull
+    - git checkout $CIRCLE_BRANCH
+    - git fetch -p        # cleanup remotes that do no longer exist
+    - git clean -d -x -f  # clean up stale files and directories
+    - git pull origin $CIRCLE_BRANCH
 
 dependencies:
   override:
-    # - mvn -s settings.xml -P release dependency:resolve
-    # - mvn -s settings.xml -DskipTests integration-test
-    # - mvn -s settings.xml -DdryRun=true --batch-mode release:prepare
+    - mvn dependency:resolve dependency:resolve-plugins
 
 test:
   override:
@@ -29,9 +34,13 @@ deployment:
   develop:
     branch: develop
     commands:
-      - mvn -s settings.xml clean deploy
+      - mvn -s settings.xml clean deploy # deploy the snapshot
+      - mvn -s settings.xml jgitflow:release-start # start the release
   release:
+    branch: /release.*/
+    commands:
+      - mvn -s settings.xml jgitflow:release-finish # finish the release
+  master:
     branch: master
     commands:
-      - mvn -s settings.xml -X -DdryRun=false --batch-mode clean release:prepare
-      - mvn -s settings.xml -X -DdryRun=false --batch-mode release:perform
+      - mvn -s settings.xml clean deploy

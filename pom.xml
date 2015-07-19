@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>ch.stangenberg</groupId>
     <artifactId>parentPom</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <name>parent pom</name>
     <description>Parent pom.xml with most used pre-configured features and versions</description>
     <url>https://github.com/stangenberg/parentPom</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <github.global.server>github</github.global.server>
+        <release-version>1.0.0</release-version>
+        <developmentVersion>1.0.1-SNAPSHOT</developmentVersion>
+        <defaultOriginUrl>git@github.com:stangenberg/parentPom.git</defaultOriginUrl>
+    </properties>
 
     <inceptionYear>2015</inceptionYear>
     <organization>
@@ -63,11 +72,6 @@
     <prerequisites>
         <maven>3.0</maven>
     </prerequisites>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <github.global.server>github</github.global.server>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -106,6 +110,16 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>2.5</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.10</version>
+                </plugin>
+                <plugin>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>1.0-m5.1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -158,6 +172,47 @@
                     <releaseProfiles>release</releaseProfiles>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>external.atlassian.jgitflow</groupId>
+                <artifactId>jgitflow-maven-plugin</artifactId>
+                <configuration>
+                    <flowInitContext>
+                        <masterBranchName>master</masterBranchName>
+                        <developBranchName>develop</developBranchName>
+                        <featureBranchPrefix>feature/</featureBranchPrefix>
+                        <releaseBranchPrefix>release/</releaseBranchPrefix>
+                        <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+                        <versionTagPrefix />
+                    </flowInitContext>
+                    <enableSshAgent>true</enableSshAgent>
+                    <allowSnapshots>true</allowSnapshots>
+                    <enableFeatureVersions>true</enableFeatureVersions>
+                    <pushFeatures>true</pushFeatures>
+                    <pushReleases>true</pushReleases>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <defaultOriginUrl>${defaultOriginUrl}</defaultOriginUrl>
+                    <keepBranch>true</keepBranch>
+                    <releaseVersion>${release-version}</releaseVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
@@ -187,25 +242,23 @@
             </properties>
         </profile>
         <profile>
-            <id>release</id>
-            <properties>
-                <github.site.dryRun>false</github.site.dryRun>
-            </properties>
+            <id>releaseBranchPrefix-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                        </configuration>
-                    </plugin>
-                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
+                        <configuration>
+                            <useAgent>false</useAgent>
+                            <keyname>${env.gpg_keyname}</keyname>
+                            <passphrase>${env.gpg_passphrase}</passphrase>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -221,5 +274,13 @@
         </profile>
 
     </profiles>
+
+    <repositories>
+        <repository>
+            <id>egit</id>
+            <name>Eclipse egit</name>
+            <url>https://repo.eclipse.org/content/repositories/egit-releases/</url>
+        </repository>
+    </repositories>
 
 </project>
