@@ -17,9 +17,9 @@ checkout:
     - git checkout master
     - git pull
     - git checkout $CIRCLE_BRANCH
-    - git pull
     - git fetch -p        # cleanup remotes that do no longer exist
     - git clean -d -x -f  # clean up stale files and directories
+    - git pull origin $CIRCLE_BRANCH
 
 dependencies:
   override:
