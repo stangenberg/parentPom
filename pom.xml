@@ -4,7 +4,7 @@
 
     <groupId>ch.stangenberg</groupId>
     <artifactId>parentPom</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
 
     <name>parent pom</name>
@@ -14,10 +14,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <github.global.server>github</github.global.server>
-        <release-version>1.0.1</release-version>
-        <developmentVersion>1.0.2-SNAPSHOT</developmentVersion>
-        <defaultOriginUrl>git@github.com:stangenberg/parentPom.git</defaultOriginUrl>
     </properties>
 
     <inceptionYear>2015</inceptionYear>
@@ -144,6 +140,7 @@
                 <artifactId>site-maven-plugin</artifactId>
                 <configuration>
                     <message>Creating site for ${project.version}</message>
+                    <server>github</server>
                     <noJekyll>true</noJekyll>
                 </configuration>
                 <executions>
