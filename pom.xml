@@ -144,6 +144,7 @@
                 <artifactId>site-maven-plugin</artifactId>
                 <configuration>
                     <message>Creating site for ${project.version}</message>
+                    <noJekyll>true</noJekyll>
                 </configuration>
                 <executions>
                     <execution>
@@ -177,39 +178,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <useReleaseProfile>true</useReleaseProfile>
-                    <releaseProfiles>release</releaseProfiles>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>external.atlassian.jgitflow</groupId>
-                <artifactId>jgitflow-maven-plugin</artifactId>
-                <configuration>
-                    <flowInitContext>
-                        <masterBranchName>master</masterBranchName>
-                        <developBranchName>develop</developBranchName>
-                        <featureBranchPrefix>feature/</featureBranchPrefix>
-                        <releaseBranchPrefix>release/</releaseBranchPrefix>
-                        <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
-                        <versionTagPrefix />
-                    </flowInitContext>
-                    <enableSshAgent>true</enableSshAgent>
-                    <allowSnapshots>true</allowSnapshots>
-                    <enableFeatureVersions>true</enableFeatureVersions>
-                    <pushFeatures>true</pushFeatures>
-                    <pushReleases>true</pushReleases>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <defaultOriginUrl>${defaultOriginUrl}</defaultOriginUrl>
-                    <keepBranch>true</keepBranch>
-                    <releaseVersion>${release-version}</releaseVersion>
-
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
@@ -270,7 +238,7 @@
             </properties>
         </profile>
         <profile>
-            <id>releaseBranchPrefix-sign-artifacts</id>
+            <id>sign-artifacts</id>
             <activation>
                 <property>
                     <name>performRelease</name>
