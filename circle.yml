@@ -38,4 +38,5 @@ deployment:
   master:
     branch: master
     commands:
-      - mvn -s settings.xml clean site deploy -Prelease-profile -DperformRelease=true # deploy the release
+      - mvn -s settings.xml clean deploy -Prelease-profile -DperformRelease=true # deploy the release
+      - mvn -s settings.xml clean site -Dgithub.site.dryRun=false # deploy the site
